@@ -1,0 +1,21 @@
+
+.container {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.left-part {
+  width: 60%;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.right-part {
+  width: 40%;
+  transition: transform .5s ease;
+  transform: translateX(105%);
+}
+
+.right-part.is-active {
+  transform: translateX(0);
+}
