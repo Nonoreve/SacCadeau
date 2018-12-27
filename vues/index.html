@@ -8,7 +8,11 @@
 </head>
 <script type="text/javascript">
   function switchInscConn(){
-    document.getElementById
+    document.getElementById("inscription-part").classList.toggle("mode-inscription");
+    document.getElementById("connexion-part").classList.toggle("mode-inscription");
+
+    document.getElementById("connexion-part").classList.toggle("mode-connexion");
+    document.getElementById("inscription-part").classList.toggle("mode-connexion");
   }
 </script>
 <body>
@@ -28,9 +32,9 @@
                 <p class="possibilite">Découvrez l'ensemble de vos possibilités : </p>
             </div>
         </div>
-        <div id="inscription-part" class="is-active">
+        <div id="inscription-part" class="is-active  mode-inscription">
             <div class="inscription-header">
-                <a href="">Se connecter</a>
+                <a onclick="switchInscConn();">Se connecter</a>
                 <a href="#">Télecharger</a>
             </div>
             <div class="inscription-content">
@@ -61,9 +65,9 @@
                 </form>
             </div>
         </div>
-        <div id="connexion-part">
+        <div id="connexion-part" class="is-active mode-inscription">
           <div class="inscription-header">
-              <a href="">S'inscrire</a>
+              <a onclick="switchInscConn();">S'inscrire</a>
               <a href="#">Télecharger</a>
           </div>
           <div class="inscription-content">

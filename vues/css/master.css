@@ -1,7 +1,11 @@
 /* global */
+html{
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: sans-serif;
+  height: 100%;
 }
 
 .container {
@@ -41,7 +45,8 @@ body {
   padding-right: 0;
   background-color: #8B0000;
   color: #dcdcdc;
-  padding-left: 7.5%;
+  padding-left: 7.5%;7
+  height: 100%;
 }
 
 .lienResp{
@@ -54,6 +59,15 @@ body {
   transition: transform .5s ease;
   transform: translateX(105%);
   background-color: #dcdcdc;
+  height: 100%;
+}
+
+#connexion-part{
+  width: 40%;
+  transition: transform .5s ease;
+  transform: translateX(105%);
+  background-color: #dcdcdc;
+  height:100%;
 }
 
 .inscription-header {
@@ -74,6 +88,10 @@ body {
   margin-bottom: 2em;
 }
 #inscription-part.is-active {
+  transform: translateX(0);
+}
+
+#connexion-part.is-active {
   transform: translateX(0);
 }
 
@@ -124,7 +142,16 @@ body {
   border:none;
 }
 
-#connexion-part{
+#connexion-part.mode-inscription{
+  display: none;
+}
+#connexion-part.mode-connexion{
+  display: inline-block;
+}
+#inscription-part.mode-inscription{
+  display: inline-block;
+}
+#inscription-part.mode-connexion{
   display: none;
 }
 
@@ -136,10 +163,18 @@ body {
     transform: translateX(105%);
     width: 0%
   }
-  #inscription-part.is-active.resp-affiche-inscription {
+  #inscription-part.is-active.resp-affiche-inscription{
     transform: translateX(0%);
     width: 100%;
   }
+
+  #inscription-part.is-active {
+    transform: translateX(105%);
+    width: 0%
+  }
+
+
+
   /*left*/
   #left-part.resp-affiche-inscription {
     display:none;
