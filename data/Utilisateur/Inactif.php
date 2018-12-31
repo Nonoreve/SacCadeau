@@ -1,5 +1,4 @@
 <?php
-  require_once("../connect.php");
   require_once("Utilisateur.php");
   class Inactif extends Utilisateur {
 
@@ -14,7 +13,7 @@
       $this -> idMembre = $row[0];
     }
 
-    static function creerInactif($idTuteur, $nom, $prenom, $co){
+    static function creerInactif($idTuteur, $nom, $prenom, $co) {
       $query = "CALL creerInactif(\"$idTuteur\", \"$nom\", \"$prenom\")";
       if(!mysqli_query($co, $query)) die("Error while processing CALL to creerInactif");
     }
@@ -24,7 +23,8 @@
     }
 
   }
+  /*require_once("../connect.php");
   $test = new Inactif(51, $co);
-  printf ("Debug : %s %s \n", $test -> getId(), $test -> getIdMembre());
-  Inactif::creerInactif(101, "Christmas", "Santa", $co);
+  printf ("Debug : [%s] %s \n", $test -> getId(), $test -> getIdMembre());
+  Inactif::creerInactif(101, "Christmas", "Santa", $co);*/
 ?>

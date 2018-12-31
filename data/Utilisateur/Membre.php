@@ -1,5 +1,4 @@
 <?php
-  require_once("../connect.php");
   require_once("Utilisateur.php");
   class Membre extends Utilisateur {
 
@@ -34,7 +33,8 @@
     }
 
   }
+  /*require_once("../connect.php");
   $test = new Membre(1, $co);
-  //printf ("Debug : %s %s %s %s %s %s\n", $test -> getId(), $test -> getNom(), $test -> getPrenom(), $test -> getMail(), $test -> getLogin(), $test -> getMdp());
-  Membre::creerCompte("The Devil", "Satan", "satan@mf.hell", "toto", "6664269", $co);
+  printf ("Debug : [%s] %s %s : %s %s %s\n", $test -> getId(), $test -> getNom(), $test -> getPrenom(), $test -> getMail(), $test -> getLogin(), $test -> getMdp());
+  Membre::creerCompte("The Devil", "Satan", "satan@mf.hell", "toto", "6664269", $co);*/
 ?>
