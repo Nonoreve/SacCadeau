@@ -1,6 +1,8 @@
 /** CSS de la page primeAbord : CSS copiable pour le header et le left panel; Left panel rétractable par le JavaScript **/
 body, html{
   height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
