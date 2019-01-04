@@ -1,0 +1,34 @@
+.plus-icon {
+  height: 2em;
+  width: auto;
+}
+
+.content-header h1{
+  display: inline-block;
+  font-size: 45px;
+  margin-left: 2%;
+}
+
+.content-header .btn-nouveau-groupe {
+  width: 20%;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  float: right;
+}
+
+.group-display{
+  margin-left: 2%;
+}
+.group-display .btn-nouveau-groupe{
+  float: left;
+}
+.btn-nouveau-groupe img {
+  display: inline-block;
+}
+
+.btn-nouveau-groupe p {
+  display: inline-block;
+  width: 50%;
+  font-size: 24px;
+}

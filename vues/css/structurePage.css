@@ -1,0 +1,90 @@
+/** CSS de la page primeAbord : CSS copiable pour le header et le left panel; Left panel rétractable par le JavaScript **/
+body, html{
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/** Header **/
+header{
+  background-color: #8B0000;
+  height: 7.5%
+}
+
+.sackado-icon {
+  display: inline-block;
+  height: 4em;
+  width: auto;
+  margin-top: 0;
+}
+.menu-icon{
+  display: inline-block;
+  margin-left: 1.5%;
+  margin-right: 3.5%;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+}
+.menu-icon-bar {
+  width: 30px;
+  height: 3px;
+  background-color: #dcdcdc;
+  margin: 6px 0;
+}
+.btn-gestionComptes{
+  float: right;
+  margin-top : 0.5%;
+  margin-bottom : 0.5%;
+  margin-right : 0.5%;
+  padding:6px 0 6px 0;
+  font:Bold 16px sans-serif;
+  background:#dcdcdc;
+  color:#000;
+  width: 15.5em;
+  height: 3em;
+  border-radius:2px;
+  border:none;
+}
+
+/** Left Part **/
+#left-panel{
+  display: none;
+}
+#left-panel.is-active{
+  margin: 0;
+  margin-right: 0;
+  display: inline-block;
+  background-color : #8B0000;
+  padding-left: 1.5em;
+  height: auto;
+  width: 7.5%;
+}
+#left-panel a {
+  display: inline-block;
+  text-decoration: none;
+  color: #dcdcdc;
+  margin-top: 2.5em;
+}
+
+#left-panel a.help-link{
+  margin-top: 25em;
+}
+
+/** Contenu **/
+#container{
+ display: inline-block;
+ background-color: #dcdcdc;
+ margin: 0;
+ padding: 0;
+ width: 92.5%;
+ height: 100%;
+}
+
+#corps{
+  display: flex;
+  height: 92.5%;
+  padding: 0;
+  margin: 0;
+}

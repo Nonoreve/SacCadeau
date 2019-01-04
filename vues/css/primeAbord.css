@@ -1,0 +1,35 @@
+#container{
+  display: inline-block;
+}
+#container h1{
+  text-align: center;
+  margin-bottom: 3em;
+  font-size: 45px;
+}
+
+.top-objectifs{
+  display: grid;
+  grid-template-columns: 1fr, 1fr, 1fr;
+  height: 25%;
+  grid-template-areas: "intro-listes intro-comptes intro-groupes";
+  padding-left: 1%;
+}
+
+.down-objectifs{
+  padding-left: 1%;
+}
+
+button{
+  float: left;
+  margin-top : 0.5%;
+  margin-bottom : 0.5%;
+  margin-right : 0.5%;
+  padding:6px 0 6px 0;
+  font:Bold 16px sans-serif;
+  background:#8B0000;
+  color: #dcdcdc;
+  width: 15.5em;
+  height: 3em;
+  border-radius:2px;
+  border:none;
+}
