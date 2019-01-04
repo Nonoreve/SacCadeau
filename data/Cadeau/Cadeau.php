@@ -27,6 +27,11 @@
       if(!mysqli_query($co, $query)) die("Error while processing CALL to supprimerCadeau");
     }
 
+    function modifierCadeau($nom, $description, $image, $lien, $co) {
+      $query = "CALL modifierCadeau(".$this -> id.", \"$nom\", \"$image\", \"$lien\", \"$description\")";
+      if(!mysqli_query($co, $query)) die("Error while processing CALL to modifierCadeau");
+    }
+
     static function creerCadeau($nom, $description, $image, $lien, $login, $co) {
       $query = "CALL creerCadeau(\"$nom\", \"$description\", \"$image\", \"$lien\", \"$login\")";
       if(!mysqli_query($co, $query)) die("Error while processing CALL to creerCadeau");
@@ -62,8 +67,9 @@
 
   }
   /*require_once("../connect.php");
-  $test = new Cadeau(61, $co);
+  $test = new Cadeau(1, $co);
   printf ("Debug : [%s] %s : %s\n", $test -> getId(), $test -> getNom(), $test -> getDescription());
   $test -> supprimer(101, $co);
-  Cadeau::creerCadeau("Butt Plug", "To enjoy your night", NULL, NULL, "toto", $co);*/
+  Cadeau::creerCadeau("Butt Plug", "To enjoy your night", NULL, NULL, "toto", $co);
+  $test -> modifierCadeau("Butt plug", "To have fun in bed", NULL, NULL, $co);*/
 ?>
