@@ -18,8 +18,23 @@
       if(!mysqli_query($co, $query)) die("Error while processing CALL to ajoutListe");
     }
 
+    function changerCadeauDeListe($idCadeau, $idListeDestination, $idProprietaire, $co) {
+      $query = "CALL changerCadeauDeListe($idCadeau, ".$this -> id.", $idListeDestination, $idProprietaire)";
+      if(!mysqli_query($co, $query)) die("Error while processing CALL to changerCadeauDeListe");
+    }
+
     function supprimerDansListe($idCadeau, $idProprietaire, $co) {
       $query = "CALL supprimerCadeauDansListe($idCadeau, $idProprietaire, ".$this -> id.")";
+      if(!mysqli_query($co, $query)) die("Error while processing CALL to supprimerListe");
+    }
+
+    function renommerListe($newName, $idVolontaire, $co) {
+      $query = "CALL renommerListe($idVolontaire, ".$this -> id.", \"$newName\")";
+      if(!mysqli_query($co, $query)) die("Error while processing CALL to renommerListe");
+    }
+
+    function supprimerListe($idCreateur, $co) {
+      $query = "CALL supprimerListe($idCreateur, ".$this -> id.")";
       if(!mysqli_query($co, $query)) die("Error while processing CALL to supprimerListe");
     }
 
@@ -46,5 +61,8 @@
   printf ("Debug : [%s] %s : %s\n", $test -> getId(), $test -> getNom(), $test -> getProprietaire());
   $test -> ajoutDansListe(1, $co);
   $test -> supprimerDansListe(1, 41, $co);
-  Liste::creerListe("toto", "The Hell List", $co);*/
+  Liste::creerListe("toto", "The Hell List", $co);
+  $test -> changerCadeauDeListe(3, 2, 41, $co);
+  $test -> renommerListe("La tres Sainte Liste de veux", 41, $co);
+  $test -> supprimerListe(41, $co);*/
 ?>
