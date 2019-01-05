@@ -44,6 +44,21 @@
       return mysqli_insert_id($co);
     }
 
+    static function fromResultToArray($mysqli_result, $co) {
+      $result = array();
+      /*$i = 0;
+      while($row = $mysqli_result -> fetch_assoc()) {
+        $result[$i] = new Liste($row['IdListe'], $co);
+        $i++;
+        echo $i;
+      }*/
+      for($i = 0; $i < $mysqli_result -> num_rows; $i++) ;
+        $row = $mysqli_result -> fetch_assoc();
+        $result[$i] = new Liste($row['IdListe'], $co);
+      }
+      return $result;
+    }
+
     function getId() {
       return $this -> id;
     }
@@ -57,14 +72,14 @@
     }
 
   }
-  require_once("../connect.php");
-  /*$test = new Liste(1, $co);
+  /*require_once("../connect.php");
+  $test = new Liste(1, $co);
   printf ("Debug : [%s] %s : %s\n", $test -> getId(), $test -> getNom(), $test -> getProprietaire());
   $test -> ajoutDansListe(1, $co);
   $test -> supprimerDansListe(1, 41, $co);
   Liste::creerListe("toto", "The Hell List", $co);
   $test -> changerCadeauDeListe(3, 2, 41, $co);
   $test -> renommerListe("La tres Sainte Liste de veux", 41, $co);
-  $test -> supprimerListe(41, $co);*/
-  echo Liste::creerListe("aa", "The Hell List", $co);
+  $test -> supprimerListe(41, $co);
+  echo Liste::creerListe("aa", "The Hell List", $co);*/
 ?>

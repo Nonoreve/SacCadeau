@@ -1,6 +1,8 @@
 <?php
     session_start();
     require_once("../data/connect.php");
+    require_once("../data/Cadeau/Liste.php");
+    require_once("../data/Cadeau/Cadeau.php");
 ?>
 <!DOCTYPE html>
 <!-- Structure de toutes les pages de l'application, à copier coller-->
@@ -79,27 +81,59 @@
                         <tr>
                             <td>
                                 <div class="case-liste">
-                                    <h1><?php
-                                            echo $_SESSION['MembreActif'];
-                                            $query = "SELECT NomListe FROM Liste WHERE IdUtilisateur=\"\"";
-                                            $rawResult = mysqli_query($co, $query);
-                                            $result = $rawResult -> fetch_assoc();
-                                            echo "Liste ".$result['NomListe'];
-                                        ?></h1>
-                                    <p><?php echo "Decription: Lorem ipsum dolor sit amet" ?></p>
-                                    <table class="liste-cadeaux">
-                                        <thead>
-                                            <td>Les Cadeaux</td>
-                                        </thead>
-                                        <tbody>
-                                            <?php echo "<tr>
-                                                <td>Cadeau Exemple 1</td>
-                                            </tr>" ?>
-                                        </tbody>
-                                    </table>
+                                    <?php
+                                        /*$query = "SELECT NomListe FROM Liste WHERE IdUtilisateur=1";//.$_SESSION['MembreActif'];
+                                        $rawResult = mysqli_query($co, $query);
+                                        $result = $rawResult -> fetch_assoc();
+                                        echo "<h1>".$result['NomListe']."</h1>
+                                            <table class=\"liste-cadeaux\">
+                                                <thead>
+                                                    <td>Les Cadeaux</td>
+                                                </thead>
+                                                <tbody>";
+                                        $query = "SELECT Cadeau.NomCadeau NomCadeau FROM Cadeau NATURAL JOIN contient WHERE contient.IdListe=15";//.$_SESSION['MembreActif'];
+                                        $rawResult = mysqli_query($co, $query);
+                                        while($result = $rawResult -> fetch_assoc()) {
+                                            echo "<tr>
+                                                    <td>".$result['NomCadeau']."</td>
+                                                </tr>";
+                                        }
+                                        echo "</tbody>
+                                            </table>";*/
+                                    ?>
                                 </div>
                             </td>
                         </tr>
+                        <?php
+                            $query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";//.$_SESSION['MembreActif'];
+                            $rawResult = mysqli_query($co, $query);
+                            $listes = Liste::fromResultToArray($rawResult, $co);
+                            //var_dump($listes);
+                            while($listes) {
+                                $aList = $listes[1];
+                                echo "
+                        <tr>
+                            <td>
+                                <div class=\"case-liste\">
+                                    <h1>".$aList -> getNom()."</h1>
+                                    <table class=\"liste-cadeaux\">
+                                        <thead>
+                                            <td>Les Cadeaux</td>
+                                        </thead>
+                                        <tbody>";
+                                /*$query = "SELECT IdCadeau FROM contient WHERE IdListe=".$aList -> getId();
+                                $rawResult = mysqli_query($co, $query);
+                                $cadeaux = Cadeau::fromResultToArray($rawResult, $co);
+                                while($result = $rawResult -> fetch_array()) {
+                                    $aGift = $cadeaux[$result['IdCadeau']];
+                                    echo "<tr>
+                                            <td>".$aGift -> getNom()."</td>
+                                        </tr>";
+                                }*/
+                                echo "</tbody>
+                                    </table>";
+                            }
+                        ?>
                         <tr>
                             <td>
                                 <a href="#">
