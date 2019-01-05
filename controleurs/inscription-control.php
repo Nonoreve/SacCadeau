@@ -37,6 +37,8 @@
       //TODO : MySql : Correction : creerCompte doit prendre un max pour continuer de fonctionner en cas de prenom et nom multiple
       $idMembre = Membre::creerCompte($nom, $prenom, $mail, $pseudo, $password, $co);
       $nouveauMembre = new Membre($idMembre, $co);
+      session_start();
+      $_SESSION['MembreActif'] = $nouveauMembre;
       header("Location: ../vues/primeAbord.html");
     }
 

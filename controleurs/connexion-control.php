@@ -18,6 +18,8 @@
     $result = mysqli_query($co, "SELECT IdUtilisateur FROM Membre WHERE LoginMembre = '$pseudo' AND MotDePasseMembre = '$mdp'");
     $resultat = mysqli_fetch_row($result);
     $nouveauMembre = new Membre($resultat[0], $co);
+    session_start();
+    $_SESSION['MembreActif'] = $nouveauMembre;
     header("Location: ../vues/primeAbord.html");
   }
 
