@@ -41,6 +41,7 @@
     static function creerListe($login, $nom, $co) {
       $query = "CALL creerListe(\"$login\", \"$nom\")";
       if(!mysqli_query($co, $query)) die("Error while processing CALL to creerListe");
+      return mysqli_insert_id($co);
     }
 
     function getId() {
@@ -56,8 +57,8 @@
     }
 
   }
-  /*require_once("../connect.php");
-  $test = new Liste(1, $co);
+  require_once("../connect.php");
+  /*$test = new Liste(1, $co);
   printf ("Debug : [%s] %s : %s\n", $test -> getId(), $test -> getNom(), $test -> getProprietaire());
   $test -> ajoutDansListe(1, $co);
   $test -> supprimerDansListe(1, 41, $co);
@@ -65,4 +66,5 @@
   $test -> changerCadeauDeListe(3, 2, 41, $co);
   $test -> renommerListe("La tres Sainte Liste de veux", 41, $co);
   $test -> supprimerListe(41, $co);*/
+  echo Liste::creerListe("aa", "The Hell List", $co);
 ?>
