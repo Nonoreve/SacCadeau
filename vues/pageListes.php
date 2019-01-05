@@ -26,7 +26,7 @@
         <button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Gerer mes comptes</button>
     </header>
     <div id='corps'>
-        <div id='left-panel' class='is-active'>
+        <div id='left-panel'>
             <a href="#">Mon Sackado</a>
             <br>
             <a href="#">Mes Listes</a>

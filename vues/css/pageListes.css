@@ -19,6 +19,7 @@
   border: medium solid #000000;
   width: 95%;
   margin-left: 2.5%;
+  height: 100%;
   border-collapse: collapse;
 }
 
@@ -60,7 +61,6 @@ td {
 
 #container .case-liste h1 {
   width: 100%;
-  display: inline-block;
   font-size: 35px;
   margin-bottom: 0px;
   margin-top: 2px;
@@ -78,12 +78,12 @@ td {
 
 #container h1 {
   font-size: 45px;
-  margin-left: 0.5%;
   display: inline-block;
+  margin-left: 0.5%;
   margin-top: 1%;
 }
 
 .content-content {
-  height: 50em;
+  height: 100%;
   overflow-y: scroll;
 }
