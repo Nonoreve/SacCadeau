@@ -19,7 +19,7 @@
     $resultat = mysqli_fetch_row($result);
     $nouveauMembre = new Membre($resultat[0], $co);
     session_start();
-    $_SESSION['MembreActif'] = $nouveauMembre;
+    $_SESSION['MembreActif'] = $nouveauMembre -> getId();
     header("Location: ../vues/primeAbord.html");
   }
 

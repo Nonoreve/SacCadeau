@@ -38,7 +38,7 @@
       $idMembre = Membre::creerCompte($nom, $prenom, $mail, $pseudo, $password, $co);
       $nouveauMembre = new Membre($idMembre, $co);
       session_start();
-      $_SESSION['MembreActif'] = $nouveauMembre;
+      $_SESSION['MembreActif'] = $nouveauMembre -> getId();
       header("Location: ../vues/primeAbord.html");
     }
 

@@ -23,7 +23,6 @@
         $query = "SELECT Utilisateur.IdUtilisateur FROM Utilisateur, Membre WHERE Utilisateur.NomUtilisateur = '$nom' AND Utilisateur.PrenomUtilisateur = '$prenom' AND Membre.MailMembre = '$mail' AND Membre.LoginMembre = '$login' AND Membre.MotDePasseMembre = '$mdp'";
         $result = mysqli_query($co, $query);
         $resultat = mysqli_fetch_assoc($result);
-        printf($resultat['IdUtilisateur']);
         return $resultat['IdUtilisateur'];
       }
     }

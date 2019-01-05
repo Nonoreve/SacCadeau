@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+    require_once("../data/connect.php");
+?>
 <!DOCTYPE html>
 <!-- Structure de toutes les pages de l'application, à copier coller-->
 <html lang="fr" dir="ltr">
@@ -77,8 +80,11 @@
                             <td>
                                 <div class="case-liste">
                                     <h1><?php
-
-                                            echo "Liste Exemple"
+                                            echo $_SESSION['MembreActif'];
+                                            $query = "SELECT NomListe FROM Liste WHERE IdUtilisateur=\"\"";
+                                            $rawResult = mysqli_query($co, $query);
+                                            $result = $rawResult -> fetch_assoc();
+                                            echo "Liste ".$result['NomListe'];
                                         ?></h1>
                                     <p><?php echo "Decription: Lorem ipsum dolor sit amet" ?></p>
                                     <table class="liste-cadeaux">
