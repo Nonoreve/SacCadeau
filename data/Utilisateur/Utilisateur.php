@@ -4,7 +4,7 @@
     private $id, $nom, $prenom;
 
     function __construct($idUtilisateur, $co) {
-      $query = "SELECT NomUtilisateur, PrenomUtilisateur FROM Utilisateur WHERE Idutilisateur=".$idUtilisateur;
+      $query = "SELECT NomUtilisateur, PrenomUtilisateur FROM Utilisateur WHERE IdUtilisateur=".$idUtilisateur;
       $result = mysqli_query($co, $query);
       if($result -> num_rows == 0) die("This user does not exist");
       $row = $result->fetch_array(MYSQLI_NUM);

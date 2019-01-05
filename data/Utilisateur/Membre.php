@@ -15,9 +15,17 @@
       $this -> mdp = $row[2];
     }
 
+/*Completement remaniée : Renvoie l'id du Membre crée */
     static function creerCompte($nom, $prenom, $mail, $login, $mdp, $co) {
       $query = "CALL creerCompte(\"$nom\", \"$prenom\", \"$mail\", \"$login\", \"$mdp\")";
-      if(!mysqli_query($co, $query)) die("Error while processing CALL to creerCompte");
+      if(!mysqli_query($co, $query)) { die("Error while processing CALL to creerCompte");}
+      else{
+        $query = "SELECT Utilisateur.IdUtilisateur FROM Utilisateur, Membre WHERE Utilisateur.NomUtilisateur = '$nom' AND Utilisateur.PrenomUtilisateur = '$prenom' AND Membre.MailMembre = '$mail' AND Membre.LoginMembre = '$login' AND Membre.MotDePasseMembre = '$mdp'";
+        $result = mysqli_query($co, $query);
+        $resultat = mysqli_fetch_assoc($result);
+        printf($resultat['IdUtilisateur']);
+        return $resultat['IdUtilisateur'];
+      }
     }
 
     function getMail() {
