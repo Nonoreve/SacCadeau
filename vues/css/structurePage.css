@@ -11,7 +11,7 @@ body, html{
 /** Header **/
 header{
   background-color: #8B0000;
-  height: 7.5%
+  height: 68px;
 }
 
 .sackado-icon {
@@ -74,17 +74,17 @@ header{
 
 /** Contenu **/
 #container{
- display: inline-block;
+ display: flex;
+ flex-direction: column;
  background-color: #dcdcdc;
  margin: 0;
  padding: 0;
- width: 92.5%;
+ width: 100%;
  height: 100%;
 }
 
 #corps{
-  display: flex;
-  height: 92.5%;
+  height: calc(100% - 68px);
   padding: 0;
   margin: 0;
 }
