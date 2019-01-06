@@ -52,7 +52,6 @@
             <div class="content-content">
                 <table class="tableau-listes">
                     <!-- On inserera ici les listes présentes ajoutées dynamiquement-->
-                    <!-- Ci-dessous, le modèle de base de présentation d'une liste -->
                     <tbody>
                         <?php
                             //$query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=".$_SESSION['MembreActif'];
