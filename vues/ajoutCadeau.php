@@ -34,16 +34,16 @@
       </div>
       <div id='container'>
         <h1>Créez votre cadeau</h1>
-        <form class="" action="index.php" method="post">
-          <input type="text" name="" value="" placeholder="Intitulé du cadeau">
+        <form class="" action="../controleurs/creation-cadeau-control.php" method="post">
+          <input type="text" name="NomCadeau" value="" placeholder="Intitulé du cadeau" required>
           <br>
-          <input type="text" name="" value="" placeholder="Descriptif du cadeau">
+          <input type="text" name="DescCadeau" value="" placeholder="Descriptif du cadeau">
           <br>
-          <input type="text" name="" value="" placeholder="Lien d'achat de cadeau">
+          <input type="text" name="LienCadeau" value="" placeholder="Lien d'achat de cadeau">
           <br>
-          <input type="text" name="" value="" placeholder="Lien d'une image du cadeau">
+          <input type="text" name="ImageCadeau" value="" placeholder="Lien d'une image du cadeau">
           <br>
-          <input type="submit" name="" value="Créer le cadeau">
+          <input type="submit" value="Créer le cadeau">
         </form>
       </div>
     </div>

@@ -1,7 +1,11 @@
 <?php
-    session_start();
-    require_once("../data/connect.php");
-    require_once("../data/Cadeau/Cadeau.php");
+	session_start();
+  if(!isset($_SESSION['MembreActif']){
+    // session echue
+    header("Location: ../vues/index.php");
+  }
+	require_once("../data/connect.php");
+	require_once("../data/Cadeau/Cadeau.php");
 ?>
 <!DOCTYPE html>
 <!-- Structure de toutes les pages de l'application, à copier coller-->
@@ -15,28 +19,29 @@
 </head>
 
 <body>
-    <header>
-        <div class="menu-icon" onclick="toggleLeftPanel();">
-            <div class="menu-icon-bar"></div>
-            <div class="menu-icon-bar"></div>
-            <div class="menu-icon-bar"></div>
-        </div>
-        <a href="../vues/primeAbord.html">
-            <img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
-        </a>
-        <a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>    </header>
-    <div id='corps'>
-      <div id='left-panel' class='is-active'>
-          <a href="./pageSackado.php">Mon Sackado</a>
-          <br>
-          <a href="./pageListes.php">Mes Listes</a>
-          <br>
-          <a href="./pageMesGroupes.php">Mes Groupes</a>
-          <br>
-          <a href="./pageComptes.php">Mes Comptes</a>
-          <br>
-          <a href="#" class="help-link">Aide</a>
-      </div>
+	<header>
+		<div class="menu-icon" onclick="toggleLeftPanel();">
+			<div class="menu-icon-bar"></div>
+			<div class="menu-icon-bar"></div>
+			<div class="menu-icon-bar"></div>
+		</div>
+		<a href="../vues/primeAbord.html">
+			<img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
+		</a>
+		<button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button>
+	</header>
+	<div id='corps'>
+		<div id='left-panel' class='is-active'>
+			<a href="./pageSackado.php">Mon Sackado</a>
+			<br>
+			<a href="./pageListes.php">Mes Listes</a>
+			<br>
+			<a href="./pageMesGroupes.php">Mes Groupes</a>
+			<br>
+			<a href="./pageComptes.php">Mes Comptes</a>
+			<br>
+			<a href="#" class="help-link">Aide</a>
+		</div>
 		<div id='container'>
 			<div class="content-header">
 				<h1>Mon Sackado</h1>
@@ -51,10 +56,10 @@
 				<div class="sackado-display">
 					<table>
 						<?php
-							//$query = "SELECT IdCadeau FROM Cadeau WHERE IdMembreCreateur=".$_SESSION['MembreActif'];
-							$query = "SELECT IdCadeau FROM Cadeau WHERE IdMembreCreateur=4";// To test on virtual data
+							$query = "SELECT IdCadeau FROM Cadeau WHERE IdMembreCreateur=".$_SESSION['MembreActif'];
+							//$query = "SELECT IdCadeau FROM Cadeau WHERE IdMembreCreateur=4";// To test on virtual data
 							$rawResult = mysqli_query($co, $query);
-                            if($rawResult -> num_rows == 0) {
+							if($rawResult -> num_rows == 0) {
 								echo "
 						<tr>
 							<td>
@@ -70,10 +75,10 @@
 								<div class=\"cadeau-element\">
 									<h2 class=\"nomCadeau\">".$cadeau -> getNom()."</h2>
 									<div class=\"cadeau-image\">
-                                        <img class=\"cadeau-image\" src=\"".$cadeau -> getImage()."\">
-                                    </div>
-                                    <p class=\"descriptif-cadeau\">".$cadeau -> getDescription()."</p>
-                                    <a href=\"".$cadeau -> getLien()."\">Lien pour acheter le cadeau</a>
+										<img class=\"cadeau-image\" src=\"".$cadeau -> getImage()."\">
+									</div>
+									<p class=\"descriptif-cadeau\">".$cadeau -> getDescription()."</p>
+									<a href=\"".$cadeau -> getLien()."\">Lien pour acheter le cadeau</a>
 								</div>
 							</td>
 						</tr>";
@@ -84,8 +89,8 @@
 							<td>
 								<a href="#">
 									<div class="btn-nouveau-groupe">
-                                        <img class="plus-icon" src="../ressources/plus-icon.png" alt="+"><p>Ajouter un cadeau</p>
-                                    </div>
+										<img class="plus-icon" src="../ressources/plus-icon.png" alt="+"><p>Ajouter un cadeau</p>
+									</div>
 								</a>
 							</td>
 						</tr>
