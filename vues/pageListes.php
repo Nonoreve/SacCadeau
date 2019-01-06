@@ -25,20 +25,20 @@
         <a href="../vues/primeAbord.html">
             <img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
         </a>
-        <button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Gerer mes comptes</button>
+        <button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button>
     </header>
     <div id='corps'>
-        <div id='left-panel'>
-            <a href="#">Mon Sackado</a>
-            <br>
-            <a href="#">Mes Listes</a>
-            <br>
-            <a href="#">Mes Groupes</a>
-            <br>
-            <a href="#">Mes Comptes</a>
-            <br>
-            <a href="#" class="help-link">Aide</a>
-        </div>
+      <div id='left-panel' class='is-active'>
+          <a href="./pageSackado.php">Mon Sackado</a>
+          <br>
+          <a href="./pageListes.php">Mes Listes</a>
+          <br>
+          <a href="./pageMesGroupes.php">Mes Groupes</a>
+          <br>
+          <a href="./pageComptes.php">Mes Comptes</a>
+          <br>
+          <a href="#" class="help-link">Aide</a>
+      </div>
         <div id='container'>
             <div class="content-header">
                 <h1>Mes Listes</h1>
