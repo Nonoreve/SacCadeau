@@ -35,11 +35,12 @@ header{
   background-color: #dcdcdc;
   margin: 8px 0;
 }
-.btn-gestionComptes{
-  float: right;
+.lien-deconnexion{
   margin-top : 0.5%;
   margin-bottom : 0.5%;
   margin-right : 0.5%;
+}
+.btn-gestionComptes{
   padding:6px 0 6px 0;
   font:Bold 16px sans-serif;
   background:#dcdcdc;

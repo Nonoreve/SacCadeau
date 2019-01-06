@@ -18,8 +18,7 @@
         <a href="../vues/index.html">
             <img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
         </a>
-        <button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Gerer mes comptes</button>
-    </header>
+        <a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>    </header>
     <div id='corps'>
       <div id='left-panel'>
           <a href="#">Mon Sackado</a>
