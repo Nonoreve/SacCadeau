@@ -1,3 +1,12 @@
+<?php
+	session_start();
+    if(!isset($_SESSION['MembreActif'])) {
+        // session echue
+        header("Location: ../vues/index.php");
+    }
+	require_once("../data/connect.php");
+	require_once("../data/Cadeau/Groupe.php");
+?>
 <!DOCTYPE html>
 <!-- Structure de toutes les pages de l'application, à copier coller-->
 <html lang="fr" dir="ltr">
@@ -46,9 +55,25 @@
             <div class="content-content">
                 <table>
                   <!--Contenu a copier et ajouter dynamiquement -->
+                    <?php
+                        $query = "SELECT IdGroupe FROM Groupe WHERE IdUtilisateur=".$_SESSION['MembreActif'];
+                        //$query = "SELECT IdGroupe FROM Groupe WHERE IdUtilisateur=2";// To test on virtual data
+						$rawResult = mysqli_query($co, $query);
+						if($rawResult -> num_rows == 0) {
+							echo "
                     <tr>
-                        <td><a href="#">MonGroupeExemple1</a></td>
-                    </tr>
+                        <td>Vous n'avez pas encore de groupe. Crééz-en un ou rejoignez-en un dès maintenant !</td>
+                    </tr>";
+                        } else {
+                            while($result = $rawResult -> fetch_assoc()) {
+								$groupe = new Groupe($result['IdGroupe'], $co);
+								echo "
+                    <tr>
+                        <td><a href=\"#\">".$groupe -> getNom()."</a></td>
+                    </tr>";
+							}
+                        }
+                    ?>
                 </table>
             </div>
         </div>

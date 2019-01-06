@@ -35,7 +35,7 @@
       <div id='container'>
         <h1>Créez votre cadeau</h1>
         <form class="" action="../controleurs/creation-cadeau-control.php" method="post">
-          <input type="text" name="NomCadeau" value="" placeholder="Intitulé du cadeau">
+          <input type="text" name="NomCadeau" value="" placeholder="Intitulé du cadeau" required>
           <br>
           <input type="text" name="DescCadeau" value="" placeholder="Descriptif du cadeau">
           <br>
