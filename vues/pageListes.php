@@ -54,89 +54,63 @@
                     <!-- On inserera ici les listes présentes ajoutées dynamiquement-->
                     <!-- Ci-dessous, le modèle de base de présentation d'une liste -->
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="case-liste">
-                                    <h1 class="list-title">Liste Exemple</h1>
-                                    <p class="list-description">Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <table class="liste-cadeaux">
-                                        <thead>
-                                            <td>Les Cadeaux</td>
-                                        </thead>
-                                        <tbody class="list-table">
-                                            <tr>
-                                                <td>Cadeau Exemple 1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cadeau Exemple 2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cadeau Exemple 3</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="case-liste">
-                                    <?php
-                                        /*$query = "SELECT NomListe FROM Liste WHERE IdUtilisateur=1";//.$_SESSION['MembreActif'];
-                                        $rawResult = mysqli_query($co, $query);
-                                        $result = $rawResult -> fetch_assoc();
-                                        echo "<h1>".$result['NomListe']."</h1>
-                                            <table class=\"liste-cadeaux\">
-                                                <thead>
-                                                    <td>Les Cadeaux</td>
-                                                </thead>
-                                                <tbody>";
-                                        $query = "SELECT Cadeau.NomCadeau NomCadeau FROM Cadeau NATURAL JOIN contient WHERE contient.IdListe=15";//.$_SESSION['MembreActif'];
-                                        $rawResult = mysqli_query($co, $query);
-                                        while($result = $rawResult -> fetch_assoc()) {
-                                            echo "<tr>
-                                                    <td>".$result['NomCadeau']."</td>
-                                                </tr>";
-                                        }
-                                        echo "</tbody>
-                                            </table>";*/
-                                    ?>
-                                </div>
-                            </td>
-                        </tr>
                         <?php
-                            $query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";//.$_SESSION['MembreActif'];
+                            //$query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=".$_SESSION['MembreActif'];
+                            $query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";// To test on virtual data
                             $rawResult = mysqli_query($co, $query);
-                            $listes = Liste::fromResultToArray($rawResult, $co);
-                            //var_dump($listes);
-                            while($listes) {
-                                $aList = $listes[1];
+                            if($rawResult -> num_rows == 0) {
                                 echo "
                         <tr>
                             <td>
                                 <div class=\"case-liste\">
-                                    <h1>".$aList -> getNom()."</h1>
+                                    <p>Vous n'avez pas encore de liste. Crééz-en une dès maintenant !</p>
+                                </div>
+                            </td>
+                        </tr>";
+                            } else {
+                                while($result = $rawResult -> fetch_assoc()) {
+                                    $liste = new Liste($result['IdListe'], $co);
+                                    echo "
+                        <tr>
+                            <td>
+                                <div class=\"case-liste\">
+                                    <h1>".$liste -> getNom()."</h1>
                                     <table class=\"liste-cadeaux\">
                                         <thead>
                                             <td>Les Cadeaux</td>
                                         </thead>
                                         <tbody>";
-                                /*$query = "SELECT IdCadeau FROM contient WHERE IdListe=".$aList -> getId();
-                                $rawResult = mysqli_query($co, $query);
-                                $cadeaux = Cadeau::fromResultToArray($rawResult, $co);
-                                while($result = $rawResult -> fetch_array()) {
-                                    $aGift = $cadeaux[$result['IdCadeau']];
-                                    echo "<tr>
-                                            <td>".$aGift -> getNom()."</td>
-                                        </tr>";
-                                }*/
-                                echo "</tbody>
+                                    $query = "SELECT IdCadeau FROM contient WHERE IdListe=".$liste -> getId();
+                                    $rawResult2 = mysqli_query($co, $query);
+                                    if($rawResult2 -> num_rows == 0) {
+                                        echo "
+                                            <tr>
+                                                <td>Pas encore de cadeaux dans cette liste.</td>
+                                            </tr>
+                                        </tbody>
                                     </table>";
+                                    } else {
+                                        while($result = $rawResult2 -> fetch_assoc()) {
+                                            $cadeau = new Cadeau($result['IdCadeau'], $co);
+                                            echo "
+                                            <tr>
+                                                <td>".$cadeau -> getNom()."</td>
+                                            </tr>";
+                                        }
+                                        echo "
+                                        </tbody>
+                                    </table>";
+                                    }
+                                    echo "
+                                </div>
+                            </td>
+                        </tr>";
+                                }
                             }
                         ?>
                         <tr>
                             <td>
-                                <a href="#">
+                                <a href="../controleurs/liste-control.php">
                                 <div class="btn-nouvelle-liste">
                                     <img class="plus-icon" src="../ressources/plus-icon.png" alt="">
                                     <p>Ajouter une liste</p>

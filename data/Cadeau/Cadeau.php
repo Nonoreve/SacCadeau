@@ -37,13 +37,6 @@
       if(!mysqli_query($co, $query)) die("Error while processing CALL to creerCadeau");
     }
 
-    static function fromResultToArray($mysqli_result, $co) {
-      while($row = $mysqli_result -> fetch_assoc()) {
-        $result[$row['IdCadeau']] = new Liste($row['IdCadeau'], $co);
-      }
-      return $result;
-    }
-
     function getId() {
       return $this -> id;
     }

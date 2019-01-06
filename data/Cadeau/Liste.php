@@ -44,21 +44,6 @@
       return mysqli_insert_id($co);
     }
 
-    static function fromResultToArray($mysqli_result, $co) {
-      $result = array();
-      /*$i = 0;
-      while($row = $mysqli_result -> fetch_assoc()) {
-        $result[$i] = new Liste($row['IdListe'], $co);
-        $i++;
-        echo $i;
-      }*/
-      for($i = 0; $i < $mysqli_result -> num_rows; $i++) ;
-        $row = $mysqli_result -> fetch_assoc();
-        $result[$i] = new Liste($row['IdListe'], $co);
-      }
-      return $result;
-    }
-
     function getId() {
       return $this -> id;
     }
