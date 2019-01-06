@@ -22,7 +22,7 @@
             <div class="menu-icon-bar"></div>
             <div class="menu-icon-bar"></div>
         </div>
-        <a href="../vues/index.html">
+        <a href="../vues/primeAbord.html">
             <img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
         </a>
         <button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Gerer mes comptes</button>
