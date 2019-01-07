@@ -1,6 +1,6 @@
 <?php
 	session_start();
-  if(!isset($_SESSION['MembreActif']){
+  if(!isset($_SESSION['MembreActif'])){
     // session echue
     header("Location: ../vues/index.php");
   }

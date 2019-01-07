@@ -47,11 +47,12 @@
 			<div id='container'>
 				<div class="content-header">
 					<?php
-						$groupe = new Groupe($_GET['groupe'], $co);
-						//$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$groupe -> getId();// use of POST would be better
-						$query = "SELECT IdListe FROM consulte WHERE IdGroupe=1";// To test on virtual data
-						$rawResult = mysqli_query($co, $query);
-						echo "
+						if(isset($_GET['groupe'])){
+							$groupe = new Groupe($_GET['groupe'], $co);
+							//$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$groupe -> getId();// use of POST would be better
+							$query = "SELECT IdListe FROM consulte WHERE IdGroupe=1";// To test on virtual data
+							$rawResult = mysqli_query($co, $query);
+							echo "
 						<h1>".$groupe -> getNom()."</h1>
 						<a href=\"#\">
 								<div class=\"btn-nouveau-groupe\">
@@ -63,39 +64,42 @@
 				<div class=\"content-content\">
 					<div class=\"group-display\">
 							<table>";
-									if($rawResult -> num_rows == 0) {
-										echo "
+							if($rawResult -> num_rows == 0) {
+								echo "
 								<tr>
 									<td>
 										<p>Ce groupe est vide. Invitez un membre dès maintenant !</p>
 									</td>
 								</tr>";
-									} else {
-										while($result = $rawResult -> fetch_assoc()) {
-											$liste = new Liste($result['IdListe'], $co);
-											$proprietaire = new Utilisateur($liste -> getProprietaire(), $co);
-											echo "
+							} else {
+								while($result = $rawResult -> fetch_assoc()) {
+									$liste = new Liste($result['IdListe'], $co);
+									$proprietaire = new Utilisateur($liste -> getProprietaire(), $co);
+									echo "
 								<tr>
 									<td>
 										<h1>".$liste -> getNom()." de ".$proprietaire -> getNom()."</h1>";
-											$query = "SELECT IdCadeau FROM contient WHERE IdListe=".$liste -> getId();
-											$rawResult2 = mysqli_query($co, $query);
-											if($rawResult2 -> num_rows == 0) {
-												echo "
+									$query = "SELECT IdCadeau FROM contient WHERE IdListe=".$liste -> getId();
+									$rawResult2 = mysqli_query($co, $query);
+									if($rawResult2 -> num_rows == 0) {
+										echo "
 										<p>Pas encore de cadeaux dans cette liste.</p>";
-											} else {
-												while($result = $rawResult2 -> fetch_assoc()) {
-													$cadeau = new Cadeau($result['IdCadeau'], $co);
-													echo "
-										<a href=\"#\"><p>".$cadeau -> getNom()."</p></a>";
-												}
-											}
+									} else {
+										while($result = $rawResult2 -> fetch_assoc()) {
+											$cadeau = new Cadeau($result['IdCadeau'], $co);
 											echo "
-									</td>
-								</tr>";
+										<a href=\"../vues/pageAfficheCadeau.php?cadeau=".$cadeau -> getId()."&groupe=".$groupe -> getId()."\"><p>".$cadeau -> getNom()."</p></a>";
 										}
 									}
-								?>
+									echo "
+									</td>
+								</tr>";
+								}
+							}
+						} else {
+							header("Location: ../vues/pageMesGroupes.php");
+						}
+					?>
 								<tr>
 									<td>
 										<a href="#">
