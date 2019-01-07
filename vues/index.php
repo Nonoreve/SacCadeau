@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <!--TODO : Correction : creerCompte doit prendre un max pour continuer de fonctionner en cas de prenom et nom multiple -->
+<!--TODO : fix creerGroupe : l'utilisateur doit appartenir au groupe qu'il crée -->
 <head>
     <meta charset="utf-8">
     <title>Sackado : Partagez sans soucis</title>
