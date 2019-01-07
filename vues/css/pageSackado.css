@@ -35,6 +35,9 @@
 
 .cadeau-element{
   padding-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  flex-grow: row wrap;
 }
 .cadeau-element .cadeau-image{
   display: inline-block;

@@ -6,6 +6,8 @@
   }
 	require_once("../data/connect.php");
 	require_once("../data/Cadeau/Cadeau.php");
+
+  $idListe = $_GET['idListe'];
 ?>
 <!DOCTYPE html>
 <!-- Structure de toutes les pages de l'application, à copier coller-->
@@ -28,7 +30,7 @@
 		<a href="../vues/primeAbord.html">
 			<img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
 		</a>
-		<a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>    </header>
+    <a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>
 	</header>
 	<div id='corps'>
 		<div id='left-panel' class='is-active'>
@@ -44,7 +46,7 @@
 		</div>
 		<div id='container'>
 			<div class="content-header">
-				<h1>Mon Sackado</h1>
+				<h1>Ajoutez votre cadeau</h1>
 				<a href="#">
 					<div class="btn-nouveau-groupe">
 						<img class="plus-icon" src="../ressources/plus-icon.png" alt="">
@@ -69,25 +71,33 @@
 							} else {
 								while($result = $rawResult -> fetch_assoc()) {
 									$cadeau = new Cadeau($result['IdCadeau'], $co);
-									echo "
-						<tr>
-							<td>
-								<div class=\"cadeau-element\">
-									<h2 class=\"nomCadeau\">".$cadeau -> getNom()."</h2>
-									<div class=\"cadeau-image\">
-										<img class=\"cadeau-image\" src=\"".$cadeau -> getImage()."\" alt='Erreur Image'>
-									</div>
-									<p class=\"descriptif-cadeau\">".$cadeau -> getDescription()."</p>
-									<a href=\"".$cadeau -> getLien()."\">Lien pour acheter le cadeau</a>
-								</div>
-							</td>
-						</tr>";
+                  $idCadeau = $cadeau->getId();
+                  $query = "SELECT EXISTS(SELECT 1 FROM contient WHERE IdListe = $idListe AND IdCadeau = $idCadeau)";
+                  $result = mysqli_query($co, $query);
+                  $resultat = mysqli_fetch_row($result);
+
+                  if($resultat[0] == 0){
+  									echo "
+  						<tr>
+  							<td>
+  								<div class=\"cadeau-element\">
+  									<h2 class=\"nomCadeau\">".$cadeau -> getNom()."</h2>
+  									<div class=\"cadeau-image\">
+  										<img class=\"cadeau-image\" src=\"".$cadeau -> getImage()."\">
+  									</div>
+  									<p class=\"descriptif-cadeau\">".$cadeau -> getDescription()."</p>
+  									<a href=\"".$cadeau -> getLien()."\">Lien pour acheter le cadeau</a>
+                    <a href='../controleurs/ajout-cadeau-liste-control.php?idListe=".$idListe."&idCadeau=".$cadeau->getId()."'>Ajouter ce cadeau à la liste</a>
+  								</div>
+  							</td>
+  						</tr>";
+            }
 								}
 							}
 						?>
 						<tr>
 							<td>
-								<a href="../vues/ajoutCadeau.php">
+								<a href="#">
 									<div class="btn-nouveau-groupe">
 										<img class="plus-icon" src="../ressources/plus-icon.png" alt="+"><p>Ajouter un cadeau</p>
 									</div>

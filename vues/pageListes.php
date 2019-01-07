@@ -58,8 +58,8 @@
                     <!-- On inserera ici les listes présentes ajoutées dynamiquement-->
                     <tbody>
                         <?php
-                            //$query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=".$_SESSION['MembreActif'];
-                            $query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";// To test on virtual data
+                            $query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=".$_SESSION['MembreActif'];
+                            //$query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";// To test on virtual data
                             $rawResult = mysqli_query($co, $query);
                             if($rawResult -> num_rows == 0) {
                                 echo "
@@ -99,6 +99,10 @@
                                             </tr>";
                                         }
                                     }
+                                    echo("
+                                    <tr>
+                                      <td><a href='../vues/pageAjoutCadeauListe.php?idListe=". $liste -> getId() ."'>Ajouter un cadeau à la liste</a></td>
+                                    </tr>");
                                     echo "
                                         </tbody>
                                     </table>
@@ -109,7 +113,6 @@
                             }
                         ?>
                         <tr>
-                          <a href="../vues/pageAjoutCadeauListe.php">Ajouter un cadeau à la liste</a>
                             <td>
                                 <a href="../controleurs/liste-control.php">
                                 <div class="btn-nouvelle-liste">
