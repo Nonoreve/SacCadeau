@@ -50,6 +50,6 @@ tr{
 }
 
 .content-content{
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 47em;
 }

@@ -28,8 +28,7 @@
           <a href="../vues/primeAbord.html">
               <img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
           </a>
-          <button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button>
-      </header>
+          <a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>      </header>
       <div id='corps'>
         <div id='left-panel' class='is-active'>
             <a href="./pageSackado.php">Mon Sackado</a>
@@ -72,7 +71,16 @@
                     </tr>";
 							}
                         }
-                    ?>
+												?>
+												<tr>
+													<td>
+														<h1>Créez votre groupe</h1>
+														<form class="creation-form" action="../controleurs/creer-groupe-control.php" method="post">
+															<input type="text" name="nouveauNom" value="" placeholder="Nom du nouveau groupe" required>
+															<input type="submit" name="" value="Créer le nouveau groupe">
+														</form>
+													</td>
+												</tr>
                 </table>
             </div>
         </div>

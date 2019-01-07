@@ -30,7 +30,7 @@
 .group-display{
   max-height: 50em;
   height: 50em;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #container h1 {

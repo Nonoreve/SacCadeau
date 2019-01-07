@@ -29,7 +29,7 @@
         <a href="../vues/primeAbord.html">
             <img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
         </a>
-        <button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button>
+        <a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>
     </header>
     <div id='corps'>
       <div id='left-panel' class='is-active'>
@@ -99,6 +99,10 @@
                                             </tr>";
                                         }
                                     }
+                                    echo("
+                                    <tr>
+                                      <td><a href='../vues/pageAjoutCadeauListe.php?idListe=". $liste -> getId() ."'>Ajouter un cadeau à la liste</a></td>
+                                    </tr>");
                                     echo "
                                         </tbody>
                                     </table>
