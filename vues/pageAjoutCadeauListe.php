@@ -46,11 +46,11 @@
 		</div>
 		<div id='container'>
 			<div class="content-header">
-				<h1>Ajoutez votre cadeau</h1>
+				<h1>Ajouter un cadeau</h1>
 				<a href="#">
 					<div class="btn-nouveau-groupe">
 						<img class="plus-icon" src="../ressources/plus-icon.png" alt="">
-						<p>Ajouter un cadeau</p>
+						<p>Créer un cadeau</p>
 					</div>
 				</a>
 			</div>
@@ -99,7 +99,7 @@
 							<td>
 								<a href="#">
 									<div class="btn-nouveau-groupe">
-										<img class="plus-icon" src="../ressources/plus-icon.png" alt="+"><p>Ajouter un cadeau</p>
+										<img class="plus-icon" src="../ressources/plus-icon.png" alt="+"><p>Créer un cadeau</p>
 									</div>
 								</a>
 							</td>

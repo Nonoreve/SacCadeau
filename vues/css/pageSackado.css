@@ -50,7 +50,7 @@
   display: inline-block;
   width: 90%;
   height: 4em;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-bottom: 0;
 }
 
@@ -67,7 +67,7 @@
 
 .content-content{
   height: 45em;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 td {
   border: thin solid #8B0000;

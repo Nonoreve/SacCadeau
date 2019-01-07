@@ -16,7 +16,7 @@
 .partie-inactifs-liste{
   width: 100%;
   height: 55%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .inactif-cellule{
   display: flex;
