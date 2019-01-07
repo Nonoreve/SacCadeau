@@ -44,12 +44,6 @@
         <div id='container'>
             <div class="content-header">
                 <h1>Mes Groupes</h1>
-                <a href="#">
-                    <div class="btn-nouveau-groupe">
-                        <img class="plus-icon" src="../ressources/plus-icon.png" alt="">
-                        <p>Créer un groupe</p>
-                    </div>
-                </a>
             </div>
             <div class="content-content">
                 <table>
