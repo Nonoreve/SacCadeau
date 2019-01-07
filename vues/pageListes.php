@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['MembreActif']){
+    if(!isset($_SESSION['MembreActif'])){
         // session echue
         header("Location: ../vues/index.php");
     }
@@ -105,6 +105,7 @@
                                     </table>";
                                     }
                                     echo "
+
                                 </div>
                             </td>
                         </tr>";
@@ -112,6 +113,7 @@
                             }
                         ?>
                         <tr>
+                          <a href="../vues/pageAjoutCadeauListe.php">Ajouter un cadeau à la liste</a>
                             <td>
                                 <a href="../controleurs/liste-control.php">
                                 <div class="btn-nouvelle-liste">
