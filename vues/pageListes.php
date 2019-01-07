@@ -58,8 +58,8 @@
                     <!-- On inserera ici les listes présentes ajoutées dynamiquement-->
                     <tbody>
                         <?php
-                            //$query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=".$_SESSION['MembreActif'];
-                            $query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";// To test on virtual data
+                            $query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=".$_SESSION['MembreActif'];
+                            //$query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";// To test on virtual data
                             $rawResult = mysqli_query($co, $query);
                             if($rawResult -> num_rows == 0) {
                                 echo "
