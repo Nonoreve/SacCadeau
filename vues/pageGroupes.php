@@ -7,6 +7,7 @@
 		require_once("../data/connect.php");
 		require_once("../data/Cadeau/Liste.php");
 		require_once("../data/Cadeau/Cadeau.php");
+		require_once("../data/Cadeau/Groupe.php");
 		require_once("../data/Utilisateur/Utilisateur.php");
 ?>
 <!DOCTYPE html>
@@ -45,70 +46,60 @@
 			</div>
 			<div id='container'>
 				<div class="content-header">
-						<h1>Groupe Exemple 1</h1>
-						<a href="#">
-								<div class="btn-nouveau-groupe">
-										<img class="plus-icon" src="../ressources/plus-icon.png" alt="">
+					<?php
+						if(isset($_GET['groupe'])){
+							$groupe = new Groupe($_GET['groupe'], $co);
+							$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$groupe -> getId();// use of POST would be better
+							//$query = "SELECT IdListe FROM consulte WHERE IdGroupe=1";// To test on virtual data
+							$rawResult = mysqli_query($co, $query);
+							echo "
+						<h1>".$groupe -> getNom()."</h1>
+						<a href=\"#\">
+								<div class=\"btn-nouveau-groupe\">
+										<img class=\"plus-icon\" src=\"../ressources/plus-icon.png\" alt=\"\">
 										<p>Inviter un membre</p>
 								</div>
 						</a>
 				</div>
-				<div class="content-content">
-					<div class="group-display">
-							<table>
-								<!--Cellule exemple à copier -->
-								<tr>
-									<td>
-										<h1>Liste du membre exemple 1</h1>
-										<form class="form-notif-achat" action="index.html" method="post">
-
-											<label for="cadeau1">Cadeau Exemple 1</label>
-											<input type="checkbox" name="cadeau1" value="">
-
-											<input type="submit" name="validate" value="Valider les changements">
-										</form>
-									</td>
-								</tr>
-								<?php
-									$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$_GET['groupe'];// use of POST would be better
-									//$query = "SELECT IdListe FROM consulte WHERE IdGroupe=1";// To test on virtual data
-									$rawResult = mysqli_query($co, $query);
-									if($rawResult -> num_rows == 0) {
-										echo "
+				<div class=\"content-content\">
+					<div class=\"group-display\">
+							<table>";
+							if($rawResult -> num_rows == 0) {
+								echo "
 								<tr>
 									<td>
 										<p>Ce groupe est vide. Invitez un membre dès maintenant !</p>
 									</td>
 								</tr>";
-									} else {
-										while($result = $rawResult -> fetch_assoc()) {
-											$liste = new Liste($result['IdListe'], $co);
-											$proprietaire = new Utilisateur($liste -> getProprietaire(), $co);
-											echo "
+							} else {
+								while($result = $rawResult -> fetch_assoc()) {
+									$liste = new Liste($result['IdListe'], $co);
+									$proprietaire = new Utilisateur($liste -> getProprietaire(), $co);
+									echo "
 								<tr>
 									<td>
-										<h1>".$liste -> getNom()." de ".$proprietaire -> getNom()."</h1>
-										<form class=\"form-notif-achat\" action=\"index.html\" method=\"post\">";
-											$query = "SELECT IdCadeau FROM contient WHERE IdListe=".$liste -> getId();
-											$rawResult2 = mysqli_query($co, $query);
-											if($rawResult2 -> num_rows == 0) {
-												echo "<label>Pas encore de cadeaux dans cette liste.</label>";
-											} else {
-												while($result = $rawResult2 -> fetch_assoc()) {
-													$cadeau = new Cadeau($result['IdCadeau'], $co);
-													echo "
-											<label for=\"cadeau".$cadeau -> getId()."\">".$cadeau -> getNom()."</label>
-											<input type=\"checkbox\" name=\"cadeau".$cadeau -> getId()."\" value=\"\">";
-												}
-											}
+										<h1>".$liste -> getNom()." de ".$proprietaire -> getNom()."</h1>";
+									$query = "SELECT IdCadeau FROM contient WHERE IdListe=".$liste -> getId();
+									$rawResult2 = mysqli_query($co, $query);
+									if($rawResult2 -> num_rows == 0) {
+										echo "
+										<p>Pas encore de cadeaux dans cette liste.</p>";
+									} else {
+										while($result = $rawResult2 -> fetch_assoc()) {
+											$cadeau = new Cadeau($result['IdCadeau'], $co);
 											echo "
-											<input type=\"submit\" name=\"validate\" value=\"Valider les changements\">
-										</form>
-									</td>
-								</tr>";
+										<a href=\"../vues/pageAfficheCadeau.php?cadeau=".$cadeau -> getId()."&groupe=".$groupe -> getId()."\"><p>".$cadeau -> getNom()."</p></a>";
 										}
 									}
-								?>
+									echo "
+									</td>
+								</tr>";
+								}
+							}
+						} else {
+							header("Location: ../vues/pageMesGroupes.php");
+						}
+					?>
 								<tr>
 									<td>
 										<a href="#">

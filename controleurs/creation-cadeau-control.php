@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	if(!isset($_SESSION['MembreActif'])){
+		// session echue
+		header("Location: ../vues/index.php");
+	}
 	require_once("../data/connect.php");
 	require_once("../data/Cadeau/Cadeau.php");
 	require_once("../data/Utilisateur/Membre.php");

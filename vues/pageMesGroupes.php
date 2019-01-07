@@ -53,9 +53,8 @@
             </div>
             <div class="content-content">
                 <table>
-                  <!--Contenu a copier et ajouter dynamiquement -->
                     <?php
-                        $query = "SELECT IdGroupe FROM Groupe WHERE IdUtilisateur=".$_SESSION['MembreActif'];
+                        $query = "SELECT IdGroupe FROM appartient WHERE IdUtilisateur=".$_SESSION['MembreActif'];
                         //$query = "SELECT IdGroupe FROM Groupe WHERE IdUtilisateur=2";// To test on virtual data
 						$rawResult = mysqli_query($co, $query);
 						if($rawResult -> num_rows == 0) {
