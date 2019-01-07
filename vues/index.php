@@ -28,7 +28,7 @@
     <div class="container">
         <div id="left-part">
             <div class="left-header">
-                <a href="../vues/index.html">
+                <a href="../vues/index.php">
                     <img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
                 </a>
                 <a href="" class="lienResp">Se connecter</a>

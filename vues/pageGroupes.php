@@ -27,20 +27,20 @@
 						<div class="menu-icon-bar"></div>
 						<div class="menu-icon-bar"></div>
 				</div>
-				<a href="../vues/index.html">
+				<a href="../vues/primeAbord.php">
 						<img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
 				</a>
 				<button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Gerer mes comptes</button>
 		</header>
 		<div id='corps'>
 			<div id='left-panel'>
-					<a href="#">Mon Sackado</a>
+					<a href="./pageSackado.php">Mon Sackado</a>
 					<br>
-					<a href="#">Mes Listes</a>
+					<a href="./pageListes.php">Mes Listes</a>
 					<br>
-					<a href="#">Mes Groupes</a>
+					<a href="./pageMesGroupes.php">Mes Groupes</a>
 					<br>
-					<a href="#">Mes Comptes</a>
+					<a href="./pageComptes.php">Mes Comptes</a>
 					<br>
 					<a href="#" class="help-link">Aide</a>
 			</div>
@@ -48,8 +48,8 @@
 				<div class="content-header">
 					<?php
 						if(isset($_GET['groupe'])){
-							$groupe = new Groupe($_GET['groupe'], $co);
-							$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$groupe -> getId();// use of POST would be better
+							$groupe = new Groupe($_GET['groupe'], $co);// use of POST would be better
+							$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$groupe -> getId();
 							//$query = "SELECT IdListe FROM consulte WHERE IdGroupe=1";// To test on virtual data
 							$rawResult = mysqli_query($co, $query);
 							echo "
@@ -64,14 +64,7 @@
 				<div class=\"content-content\">
 					<div class=\"group-display\">
 							<table>";
-							if($rawResult -> num_rows == 0) {
-								echo "
-								<tr>
-									<td>
-										<p>Ce groupe est vide. Invitez un membre dès maintenant !</p>
-									</td>
-								</tr>";
-							} else {
+							if($rawResult -> num_rows > 0) {
 								while($result = $rawResult -> fetch_assoc()) {
 									$liste = new Liste($result['IdListe'], $co);
 									$proprietaire = new Utilisateur($liste -> getProprietaire(), $co);
@@ -95,6 +88,16 @@
 									</td>
 								</tr>";
 								}
+							}
+							$query = "SELECT IdUtilisateur FROM appartient WHERE IdGroupe=".$groupe -> getId();
+							$rawResult = mysqli_query($co, $query);
+							if($rawResult -> num_rows == 0) {
+								echo "
+								<tr>
+									<td>
+										<p>Ce groupe est vide. Invitez un membre dès maintenant !</p>
+									</td>
+								</tr>";
 							}
 						} else {
 							header("Location: ../vues/pageMesGroupes.php");
