@@ -56,8 +56,8 @@
                 <table>
                   <!--Contenu a copier et ajouter dynamiquement -->
                     <?php
-                        $query = "SELECT IdGroupe FROM Groupe WHERE IdUtilisateur=".$_SESSION['MembreActif'];
-                        //$query = "SELECT IdGroupe FROM Groupe WHERE IdUtilisateur=2";// To test on virtual data
+                        //$query = "SELECT IdGroupe FROM Groupe WHERE IdUtilisateur=".$_SESSION['MembreActif'];
+                        $query = "SELECT IdGroupe FROM Groupe WHERE IdUtilisateur=2";// To test on virtual data
 						$rawResult = mysqli_query($co, $query);
 						if($rawResult -> num_rows == 0) {
 							echo "
@@ -69,7 +69,7 @@
 								$groupe = new Groupe($result['IdGroupe'], $co);
 								echo "
                     <tr>
-                        <td><a href=\"#\">".$groupe -> getNom()."</a></td>
+                        <td><a href=\"../vues/pageGroupes.php?groupe=".$groupe -> getId()."\">".$groupe -> getNom()."</a></td>
                     </tr>";
 							}
                         }

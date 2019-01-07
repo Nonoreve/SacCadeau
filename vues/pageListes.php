@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['MembreActif']){
+    if(!isset($_SESSION['MembreActif'])){
         // session echue
         header("Location: ../vues/index.php");
     }
@@ -89,9 +89,7 @@
                                         echo "
                                             <tr>
                                                 <td>Pas encore de cadeaux dans cette liste.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>";
+                                            </tr>";
                                     } else {
                                         while($result = $rawResult2 -> fetch_assoc()) {
                                             $cadeau = new Cadeau($result['IdCadeau'], $co);
@@ -100,11 +98,10 @@
                                                 <td>".$cadeau -> getNom()."</td>
                                             </tr>";
                                         }
-                                        echo "
-                                        </tbody>
-                                    </table>";
                                     }
                                     echo "
+                                        </tbody>
+                                    </table>
                                 </div>
                             </td>
                         </tr>";
