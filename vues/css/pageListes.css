@@ -1,0 +1,89 @@
+.plus-icon {
+  height: 2em;
+  width: auto;
+}
+
+.btn-nouvelle-liste {
+  width: 20%;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  float: right;
+}
+
+.tableau-listes .btn-nouvelle-liste {
+  float: left;
+}
+
+.tableau-listes {
+  border: medium solid #000000;
+  width: 95%;
+  margin-left: 2.5%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.case-liste p{
+  display: inline-block;
+  width: 45%;
+  height: 60%;
+  margin-top: 0;
+  margin-left: 1.5%;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+td {
+  border: thin solid #8B0000;
+}
+
+.liste-cadeaux{
+  width: 50%;
+  display: inline-block;
+  border-collapse: collapse;
+  height:10em;
+  overflow-y: auto;
+}
+
+.liste-cadeaux td{
+  width: 0.5%;
+}
+.liste-cadeaux tr{
+  width: 0.5%;
+}
+.liste-cadeaux thead tr{
+  text-decoration: underline;
+  background-color: #8B0000 !important;
+  color: #dcdcdc;
+}
+.liste-cadeaux tr:nth-child(odd){
+  background-color:#F08080;
+}
+
+#container .case-liste h1 {
+  width: 100%;
+  font-size: 35px;
+  margin-bottom: 0px;
+  margin-top: 2px;
+}
+
+.btn-nouvelle-liste img {
+  display: inline-block;
+}
+
+.btn-nouvelle-liste p {
+  display: inline-block;
+  width: 50%;
+  font-size: 24px;
+}
+
+#container h1 {
+  font-size: 45px;
+  display: inline-block;
+  margin-left: 0.5%;
+  margin-top: 1%;
+}
+
+.content-content {
+  height: 100%;
+  overflow-y: auto;
+}

@@ -1,0 +1,74 @@
+.plus-icon {
+  height: 2em;
+  width: auto;
+}
+
+.content-header h1{
+  display: inline-block;
+  font-size: 45px;
+  margin-left: 2%;
+}
+
+.content-header .btn-nouveau-groupe {
+  width: 20%;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  float: right;
+}
+
+.group-display{
+  margin-left: 2%;
+}
+.group-display .btn-nouveau-groupe{
+  float: left;
+}
+.btn-nouveau-groupe img {
+  display: inline-block;
+}
+
+.btn-nouveau-groupe p {
+  display: inline-block;
+  width: 50%;
+  font-size: 24px;
+}
+
+.cadeau-element{
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  flex-grow: row wrap;
+}
+.cadeau-element .cadeau-image{
+  display: inline-block;
+  height: 4em;
+  width: 4em;
+  border: solid 1px black;
+}
+
+.cadeau-element .descriptif-cadeau{
+  display: inline-block;
+  width: 90%;
+  height: 4em;
+  overflow-y: auto;
+  margin-bottom: 0;
+}
+
+.cadeau-element a{
+  display: inline-block;
+}
+
+.sackado-display table{
+  border: 2px solid #000000;
+  width: 97%;
+  margin-left: 1.5%;
+  border-collapse: collapse;
+}
+
+.content-content{
+  height: 45em;
+  overflow-y: auto;
+}
+td {
+  border: thin solid #8B0000;
+}

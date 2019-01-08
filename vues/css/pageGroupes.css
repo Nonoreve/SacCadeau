@@ -1,0 +1,61 @@
+.plus-icon {
+  height: 2em;
+  width: auto;
+}
+
+.btn-nouveau-groupe {
+  width: 20%;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  float: right;
+}
+
+.group-display{
+  margin-left: 2%;
+}
+.group-display .btn-nouveau-groupe{
+  float: left;
+}
+.btn-nouveau-groupe img {
+  display: inline-block;
+}
+
+.btn-nouveau-groupe p {
+  display: inline-block;
+  width: 50%;
+  font-size: 24px;
+}
+
+.group-display{
+  max-height: 50em;
+  height: 50em;
+  overflow-y: auto;
+}
+
+#container h1 {
+  font-size: 45px;
+  margin-left: 0.5%;
+  display: inline-block;
+  margin-top: 1%;
+}
+
+#container .group-display h1{
+  font-size: 24px;
+  margin-left: 0;
+}
+
+input[type=submit]{
+  float: left;
+  margin-top : 0.5%;
+  margin-bottom : 0.5%;
+  margin-right : 0.5%;
+  padding:6px 0 6px 0;
+  font:Bold 16px sans-serif;
+  background:#8B0000;
+  color: #dcdcdc;
+  width: 15.5em;
+  height: 3em;
+  border-radius:2px;
+  border:none;
+}
