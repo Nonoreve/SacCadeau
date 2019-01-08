@@ -52,9 +52,10 @@
 							$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$groupe -> getId();
 							//$query = "SELECT IdListe FROM consulte WHERE IdGroupe=1";// To test on virtual data
 							$rawResult = mysqli_query($co, $query);
+
 							echo "
 						<h1>".$groupe -> getNom()."</h1>
-						<a href=\"#\">
+						<a href='../vues/pageInviterMembre.php?groupe=".$groupe -> getId()."'>
 								<div class=\"btn-nouveau-groupe\">
 										<img class=\"plus-icon\" src=\"../ressources/plus-icon.png\" alt=\"\">
 										<p>Inviter un membre</p>
@@ -64,40 +65,81 @@
 				<div class=\"content-content\">
 					<div class=\"group-display\">
 							<table>";
+
+							$usersWithList = array();
 							if($rawResult -> num_rows > 0) {
 								while($result = $rawResult -> fetch_assoc()) {
 									$liste = new Liste($result['IdListe'], $co);
 									$proprietaire = new Utilisateur($liste -> getProprietaire(), $co);
+									array_push($usersWithList, $proprietaire -> getId());
+
 									echo "
 								<tr>
 									<td>
-										<h1>".$liste -> getNom()." de ".$proprietaire -> getNom()."</h1>";
+										<h1>".$liste -> getNom()." de ".$proprietaire -> getPrenom()." ".$proprietaire -> getNom()."</h1>";
+
 									$query = "SELECT IdCadeau FROM contient WHERE IdListe=".$liste -> getId();
 									$rawResult2 = mysqli_query($co, $query);
 									if($rawResult2 -> num_rows == 0) {
+
 										echo "
 										<p>Pas encore de cadeaux dans cette liste.</p>";
+
 									} else {
 										while($result = $rawResult2 -> fetch_assoc()) {
 											$cadeau = new Cadeau($result['IdCadeau'], $co);
+
 											echo "
 										<a href=\"../vues/pageAfficheCadeau.php?cadeau=".$cadeau -> getId()."&groupe=".$groupe -> getId()."\"><p>".$cadeau -> getNom()."</p></a>";
+
 										}
 									}
+
 									echo "
 									</td>
 								</tr>";
+
 								}
 							}
 							$query = "SELECT IdUtilisateur FROM appartient WHERE IdGroupe=".$groupe -> getId();
 							$rawResult = mysqli_query($co, $query);
 							if($rawResult -> num_rows == 0) {
+
 								echo "
 								<tr>
 									<td>
 										<p>Ce groupe est vide. Invitez un membre dès maintenant !</p>
 									</td>
 								</tr>";
+
+							} else {
+								$usersNoList = array();
+								while($result = $rawResult -> fetch_assoc()) {
+									$user = new Utilisateur($result['IdUtilisateur'], $co);
+									// looks for the user in those who have lists
+									if($key = array_search($user -> getId(), $usersWithList) == FALSE) {
+										// construct the array of names
+										array_push($usersNoList, $user -> getPrenom()." ".$user -> getNom());
+									} else {
+										// remove this value from the array
+										var_dump($usersWithList);
+										array_splice($usersWithList, $key - 1, $key);
+										var_dump($usersWithList);
+									}
+								}
+								if($length = count($usersNoList) > 0){
+								echo "
+								<tr>
+									<td>
+										<p>Ces utilisateurs n'ont pas encore de liste : ";
+									for($i = 0; $i < $length; $i++){
+										echo $usersNoList[$i].", ";
+									}
+									echo $usersNoList[$length].".";
+								echo "</p>
+									</td>
+								</tr>";
+								}
 							}
 						} else {
 							header("Location: ../vues/pageMesGroupes.php");
