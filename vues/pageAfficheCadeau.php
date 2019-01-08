@@ -51,10 +51,10 @@
 								echo "
 					<h2 class='nomCadeau'>".$cadeau -> getNom()."</h2>
 					<div class='cadeau-image'>
-						<img class='cadeau-image' src='".$cadeau -> getImage()."'>
+						<img class='cadeau-image' src='".($cadeau -> getImage() == "NULL" ? "../ressources/icon.png" : $cadeau -> getImage())."'>
 					</div>
-					<p class='descriptif-cadeau'>".$cadeau -> getDescription()."</p>
-					<a href='".$cadeau -> getLien()."'>Lien pour acheter le cadeau</a>
+					<p class='descriptif-cadeau'>".($cadeau -> getDescription() == "NULL" ? "Aucune descrption n'est disponible pour ce cadeau." : $cadeau -> getDescription())."</p>".
+					($cadeau -> getLien() == "NULL" ? "Pas de site marchand pour ce cadeau." : "<a href='".$cadeau -> getLien()."'>Lien pour acheter le cadeau</a>")."
 					<br>
 					<a href='../controleurs/achat-cadeau-control.php?cadeau=".$cadeau -> getId()."&groupe=".$_GET['groupe']."'>
 					<button type='button' name='button' >Je lui achete ce cadeau !</button></a>";

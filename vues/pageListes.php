@@ -46,7 +46,7 @@
         <div id='container'>
             <div class="content-header">
                 <h1>Mes Listes</h1>
-                <a href="#">
+                <a href="../vues/pageAjoutListe.php">
                     <div class="btn-nouvelle-liste">
                         <img class="plus-icon" src="../ressources/plus-icon.png" alt="">
                         <p>Ajouter une liste</p>
@@ -114,7 +114,7 @@
                         ?>
                         <tr>
                             <td>
-                                <a href="../controleurs/liste-control.php">
+                                <a href="../vues/pageAjoutListe.php">
                                 <div class="btn-nouvelle-liste">
                                     <img class="plus-icon" src="../ressources/plus-icon.png" alt="">
                                     <p>Ajouter une liste</p>

@@ -5,7 +5,17 @@
 
 .btn-nouveau-groupe {
   width: 20%;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  color: black;
+  float: right;
+}
+
+td .btn-nouveau-groupe {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   text-decoration: none;
   color: black;
   float: right;
@@ -16,6 +26,11 @@
 }
 .group-display .btn-nouveau-groupe{
   float: left;
+}
+
+.group-display a{
+  text-decoration: none;
+  color: black;
 }
 .btn-nouveau-groupe img {
   display: inline-block;
