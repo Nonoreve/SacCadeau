@@ -30,10 +30,10 @@
 				<a href="../vues/primeAbord.php">
 						<img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
 				</a>
-				<button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Gerer mes comptes</button>
+				<a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>      </header>
 		</header>
 		<div id='corps'>
-			<div id='left-panel'>
+			<div id='left-panel' class='is-active'>
 					<a href="./pageSackado.php">Mon Sackado</a>
 					<br>
 					<a href="./pageListes.php">Mes Listes</a>
@@ -105,7 +105,7 @@
 					?>
 								<tr>
 									<td>
-										<a href="#">
+										<?php echo"<a href='../vues/pageInviterMembre.php?groupe=".$groupe -> getId()."'>"; ?>
 												<div class="btn-nouveau-groupe">
 														<img class="plus-icon" src="../ressources/plus-icon.png" alt="">
 														<p>Inviter un membre</p>
