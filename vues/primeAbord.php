@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	if(!isset($_SESSION['MembreActif'])){
+		// session echue
+		header("Location: ../vues/index.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 

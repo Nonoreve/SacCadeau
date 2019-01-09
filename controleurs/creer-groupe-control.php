@@ -1,7 +1,11 @@
 <?php
   require_once("../data/connect.php");
   require_once("../data/Cadeau/Groupe.php");
-  session_start();
+	session_start();
+	if(!isset($_SESSION['MembreActif'])){
+		// session echue
+		header("Location: ../vues/index.php");
+	}
   $nouveauNom = $_POST['nouveauNom'];
   $idCreateur = $_SESSION['MembreActif'];
   $query = "CALL creerGroupe('$nouveauNom', $idCreateur)";

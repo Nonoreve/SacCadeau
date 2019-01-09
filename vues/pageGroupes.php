@@ -91,6 +91,17 @@
 										<a href=\"../vues/pageAfficheCadeau.php?cadeau=".$cadeau -> getId()."&groupe=".$groupe -> getId()."\"><p>".$cadeau -> getNom()."</p></a>";
 									}
 								}
+							$query = "SELECT IdUtilisateur FROM appartient WHERE IdGroupe=".$groupe -> getId();
+							$rawResult = mysqli_query($co, $query);
+							if($rawResult -> num_rows == 0) {
+								echo "
+								<tr>
+									<td>
+										<p>Ce groupe est vide. Invitez un membre dès maintenant !</p>
+									</td>
+								</tr>";
 							}
+						} else {
+							header("Location: ../vues/pageMesGroupes.php");
 						}
 ?>
