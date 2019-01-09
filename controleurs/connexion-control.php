@@ -20,7 +20,7 @@
     $nouveauMembre = new Membre($resultat[0], $co);
     session_start();
     $_SESSION['MembreActif'] = $nouveauMembre -> getId();
-    header("Location: ../vues/primeAbord.html");
+    header("Location: ../vues/primeAbord.php");
   }
 
   include("../vues/index.php");
