@@ -50,7 +50,8 @@
 						if(isset($_GET['groupe'])){
 							$groupe = new Groupe($_GET['groupe'], $co);// use of POST would be better
 							$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$groupe -> getId();
-							//$query = "SELECT IdListe FROM consulte WHERE
+							//$query = "SELECT IdListe FROM consulte WHERE IdGroupe=1";// To test on virtual data
+							$rawResult = mysqli_query($co, $query);
 
 							echo "
 						<h1>".$groupe -> getNom()."</h1>
