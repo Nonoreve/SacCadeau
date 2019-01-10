@@ -52,6 +52,7 @@
 							$query = "SELECT IdListe FROM consulte WHERE IdGroupe=".$groupe -> getId();
 							//$query = "SELECT IdListe FROM consulte WHERE IdGroupe=1";// To test on virtual data
 							$rawResult = mysqli_query($co, $query);
+							echo $groupe -> getId();
 
 							echo "
 						<h1>".$groupe -> getNom()."</h1>
@@ -127,16 +128,17 @@
 										var_dump($usersWithList);
 									}
 								}
-								if($length = count($usersNoList) > 0){
-								echo "
+								$length = count($usersNoList);
+								if($length > 0){
+									echo "
 								<tr>
 									<td>
 										<p>Ces utilisateurs n'ont pas encore de liste : ";
-									for($i = 0; $i < $length; $i++){
+									for($i = 0; $i < $length - 1; $i++){
 										echo $usersNoList[$i].", ";
 									}
-									echo $usersNoList[$length].".";
-								echo "</p>
+									echo $usersNoList[$length - 1].".";
+									echo "</p>
 									</td>
 								</tr>";
 								}
