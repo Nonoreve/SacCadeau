@@ -23,3 +23,11 @@ input[type=submit]{
 #container{
   padding-left: 2.5%;
 }
+
+.comptesAcces{
+  margin-bottom: 1em;
+}
+
+.comptesAcces label{
+  font-size: 20px;
+}
