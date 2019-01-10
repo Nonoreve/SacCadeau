@@ -41,8 +41,10 @@
         <form class="" action="../controleurs/creation-liste-control.php" method="post">
           <input type="text" name="nomListe" value="" placeholder="Nom de la liste" required>
           <br>
-          <h2> Choisissez le compte à qui attribuer la liste</h2>
-          <?php afficheInactif($_SESSION['MembreActif'], $co);?>
+          <div class='comptesAcces'>
+            <h2> Choisissez le compte à qui attribuer la liste</h2>
+            <?php afficheInactif($_SESSION['MembreActif'], $co);?>
+          </div>
           <input type="submit" value="Créer la liste">
         </form>
       </div>
