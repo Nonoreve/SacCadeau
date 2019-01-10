@@ -39,7 +39,7 @@
       $nouveauMembre = new Membre($idMembre, $co);
       session_start();
       $_SESSION['MembreActif'] = $nouveauMembre -> getId();
-      header("Location: ../vues/primeAbord.html");
+      header("Location: ../vues/primeAbord.php");
     }
 
     include("../vues/index.php");

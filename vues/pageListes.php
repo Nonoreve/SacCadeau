@@ -7,6 +7,8 @@
     require_once("../data/connect.php");
     require_once("../data/Cadeau/Liste.php");
     require_once("../data/Cadeau/Cadeau.php");
+    require_once("../data/Utilisateur/Utilisateur.php");
+
 ?>
 <!DOCTYPE html>
 <!-- Structure de toutes les pages de l'application, à copier coller-->
@@ -58,7 +60,8 @@
                     <!-- On inserera ici les listes présentes ajoutées dynamiquement-->
                     <tbody>
                         <?php
-                            $query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=".$_SESSION['MembreActif'];
+                            $idMembre = $_SESSION['MembreActif'];
+                            $query = "SELECT DISTINCT IdListe, Liste.IdUtilisateur FROM Liste, Inactif WHERE Liste.IdUtilisateur= $idMembre OR (Liste.IdUtilisateur = Inactif.IdUtilisateur AND Inactif.IdUtilisateur_Membre = $idMembre)";
                             //$query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";// To test on virtual data
                             $rawResult = mysqli_query($co, $query);
                             if($rawResult -> num_rows == 0) {
@@ -78,6 +81,7 @@
                             <td>
                                 <div class=\"case-liste\">
                                     <h1>".$liste -> getNom()."</h1>
+                                    <div class=\"case-liste-content\">
                                     <table class=\"liste-cadeaux\">
                                         <thead>
                                             <td>Les Cadeaux</td>
@@ -103,9 +107,14 @@
                                     <tr>
                                       <td><a href='../vues/pageAjoutCadeauListe.php?idListe=". $liste -> getId() ."'>Ajouter un cadeau à la liste</a></td>
                                     </tr>");
+                                    $proprietaire = new Utilisateur($liste->getProprietaire(),$co);
                                     echo "
                                         </tbody>
                                     </table>
+                                    <div class ='nom-proprietaire'>
+                                    <p>Cette liste est destinée à : ".$proprietaire -> getNom(). " ". $proprietaire -> getPrenom()."</p>
+                                    </div>
+                                    </div>
                                 </div>
                             </td>
                         </tr>";
@@ -125,7 +134,6 @@
                     </tbody>
                 </table>
             </div>
-
     </div>
     </div>
     <script type="text/javascript" src="./js/structureAnimations.js"></script>

@@ -100,8 +100,7 @@
 										<p>Ce groupe est vide. Invitez un membre dès maintenant !</p>
 									</td>
 								</tr>";
-							}
-						} else {
+							} else {
 							header("Location: ../vues/pageMesGroupes.php");
-						}
+							}
 ?>
