@@ -21,7 +21,7 @@
             <div class="menu-icon-bar"></div>
             <div class="menu-icon-bar"></div>
         </div>
-        <a href="../vues/primeAbord.html">
+        <a href="../vues/primeAbord.php">
             <img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
         </a>
         <a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>

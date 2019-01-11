@@ -60,8 +60,8 @@
                     <tbody>
                         <?php
                             $idMembre = $_SESSION['MembreActif'];
-                            $query = "SELECT DISTINCT IdListe, Liste.IdUtilisateur FROM Liste, Inactif WHERE Liste.IdUtilisateur= $idMembre OR (Liste.IdUtilisateur = Inactif.IdUtilisateur AND Inactif.IdUtilisateur_Membre = $idMembre)";
-                            //$query = "SELECT IdListe FROM Liste WHERE IdUtilisateur=1";// To test on virtual data
+                            $query = "SELECT DISTINCT IdListe, IdUtilisateur FROM Liste WHERE IdUtilisateur=$idMembre OR IdUtilisateur IN (SELECT IdUtilisateur FROM Inactif WHERE IdUtilisateur_Membre=$idMembre)";
+                            //$query = "SELECT DISTINCT IdListe, Liste.IdUtilisateur FROM Liste, Inactif WHERE Liste.IdUtilisateur= $idMembre OR (Liste.IdUtilisateur = Inactif.IdUtilisateur AND Inactif.IdUtilisateur_Membre = $idMembre)";
                             $rawResult = mysqli_query($co, $query);
                             if($rawResult -> num_rows == 0) {
                                 echo "
@@ -111,8 +111,7 @@
                                         </tbody>
                                     </table>
                                     <div class ='nom-proprietaire'>
-                                    <p>Cette liste est destinée à : ".$proprietaire -> getNom(). " ". $proprietaire -> getPrenom()."</p>
-                                    </div>
+                                        <p>Cette liste est destinée à : ".$proprietaire -> getNom(). " ". $proprietaire -> getPrenom()."</p>
                                     </div>
                                 </div>
                             </td>
