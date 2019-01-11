@@ -1,12 +1,14 @@
 <?php
 	session_start();
   if(!isset($_SESSION['MembreActif'])){
-    // session echue
-    header("Location: ../vues/index.php");
+		// session echue
+		header("Location: ../vues/index.php");
   }
 	require_once("../data/connect.php");
 	require_once("../data/Cadeau/Cadeau.php");
-
+  if(!isset($_GET['idListe'])) {
+		header("Location: ../vues/pageSackado.php");
+	}
   $idListe = $_GET['idListe'];
 ?>
 <!DOCTYPE html>
@@ -30,7 +32,7 @@
 		<a href="../vues/primeAbord.php">
 			<img src="../ressources/logo.png" alt="logo-sackado" class="sackado-icon">
 		</a>
-    <a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>
+	<a href="../controleurs/deconnexion-control.php" class="lien-deconnexion"><button type="button" name="btn-gestionComptes" class="btn-gestionComptes">Se déconnecter</button></a>
 	</header>
 	<div id='corps'>
 		<div id='left-panel' class='is-active'>
@@ -71,12 +73,12 @@
 							} else {
 								while($result = $rawResult -> fetch_assoc()) {
 									$cadeau = new Cadeau($result['IdCadeau'], $co);
-                  $idCadeau = $cadeau->getId();
-                  $query = "SELECT EXISTS(SELECT 1 FROM contient WHERE IdListe = $idListe AND IdCadeau = $idCadeau)";
-                  $result = mysqli_query($co, $query);
-                  $resultat = mysqli_fetch_row($result);
+				  $idCadeau = $cadeau->getId();
+				  $query = "SELECT EXISTS(SELECT 1 FROM contient WHERE IdListe = $idListe AND IdCadeau = $idCadeau)";
+				  $result = mysqli_query($co, $query);
+				  $resultat = mysqli_fetch_row($result);
 
-                  if($resultat[0] == 0){
+				  if($resultat[0] == 0){
   									echo "
   						<tr>
   							<td>
@@ -87,11 +89,11 @@
   									</div>
   									<p class=\"descriptif-cadeau\">".$cadeau -> getDescription()."</p>
   									<a href=\"".$cadeau -> getLien()."\">Lien pour acheter le cadeau</a>
-                    <a href='../controleurs/ajout-cadeau-liste-control.php?idListe=".$idListe."&idCadeau=".$cadeau->getId()."'>Ajouter ce cadeau à la liste</a>
+					<a href='../controleurs/ajout-cadeau-liste-control.php?idListe=".$idListe."&idCadeau=".$cadeau->getId()."'>Ajouter ce cadeau à la liste</a>
   								</div>
   							</td>
   						</tr>";
-            }
+			}
 								}
 							}
 						?>
