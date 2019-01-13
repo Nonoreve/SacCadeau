@@ -75,7 +75,7 @@
 					?>
 								<tr>
 									<td>
-										<a href="#">
+										<a href="../vues/pageInvitationMail.php">
 												<div class="btn-nouveau-groupe">
 														<img class="plus-icon" src="../ressources/plus-icon.png" alt="">
 														<p>Inviter une personne à vous rejoindre sur Sackado par eMail</p>

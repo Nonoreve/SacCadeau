@@ -1,7 +1,7 @@
 h1{
   font-size: 40px;
 }
-input[type=text]{
+input{
   width: 30em;
   height: 4em;
   border: 1px solid #696969;
